@@ -13,10 +13,6 @@ const modelo = {
         }
     },
 
-    esValido: function(x,y){
-        return x>=0 && y>=0 && x<this.filas && y<this.columnas && this.matriz[x][y]==0;
-    },
-
     pintar: function(x,y){
         this.matriz[x][y] = 1;
     }
