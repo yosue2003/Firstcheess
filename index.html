@@ -1,18 +1,172 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Grilla Responsiva</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h2>Grilla tipo ajedrez</h2>
+    </header>
 
-<h2>Grilla tipo ajedrez</h2>
-<button onclick="controlador.iniciar()">Iniciar</button>
+    <main>
+      <div id="tablero">
+        <!-- Fila 1 -->
+        <div class="fila">
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+        </div>
+        <div class="fila">
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+        </div>
+        <div class="fila">
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+        </div>
+        <div class="fila">
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+        </div>
+        <div class="fila">
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+        </div>
+        <div class="fila">
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+        </div>
+        <div class="fila">
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+        </div>
+        <div class="fila">
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+        </div>
+        <div class="fila">
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+        </div>
+        <div class="fila">
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+          <div class="casilla blanco"></div>
+        </div>
+      </div>
+    </main>
 
-<div id="tablero"></div>
+    <script>
+      let fila, columna;
+      const intentosRandoms = 3;
+      let ultimaFila, ultimaColumna;
 
-<script src="modelo.js"></script>
-<script src="controlador.js"></script>
-</body>
+      for (var i = 0; i < intentosRandoms; i++) {
+        fila = Math.floor(Math.random() * 10);
+        columna = Math.floor(Math.random() * 10);
+        pintadaInicial(fila, columna);
+      }
+
+      function pintadaInicial(ultimaFila, ultimaColumna) {
+        const filas = document.querySelectorAll(".fila");
+        
+        for (let dy = -1; dy <= 1; dy++) {
+          for (let dx = -1; dx <= 1; dx++) {
+            let f = ultimaFila + dy;
+            let c = ultimaColumna + dx;
+
+            // Validar que esté dentro del tablero
+            if (f >= 0 && f < 10 && c >= 0 && c < 10) {
+              const casilla = filas[f].querySelectorAll(".casilla")[c];
+
+              if (casilla) {
+                casilla.classList.remove("blanco");
+                casilla.classList.add("negro");
+              }
+            }
+          }
+        }
+      }
+    </script>
+  </body>
 </html>
