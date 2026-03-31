@@ -149,13 +149,10 @@
 
       function pintadaInicial(ultimaFila, ultimaColumna) {
         const filas = document.querySelectorAll(".fila");
-        
         for (let dy = -1; dy <= 1; dy++) {
           for (let dx = -1; dx <= 1; dx++) {
             let f = ultimaFila + dy;
             let c = ultimaColumna + dx;
-
-            // Validar que esté dentro del tablero
             if (f >= 0 && f < 10 && c >= 0 && c < 10) {
               const casilla = filas[f].querySelectorAll(".casilla")[c];
 
@@ -167,6 +164,12 @@
           }
         }
       }
+
+      document.querySelectorAll(".casilla").forEach((casilla, index) => {
+        casilla.addEventListener("click", function (event) {
+          pintadaInicial(Math.floor(index / 10), index%10 );
+        });
+      });
     </script>
   </body>
 </html>
